@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Flight Booking App">
+  <test name="SpiceJet">
+  <groups>
+  <run>
+  <include name="smoke"></include>
+  </run>
+  </groups>	
+    <classes>
+      <class name="com.dropdownpractice.DropdownPracticeTest"/>
+      <class name="com.dropdownpractice.TestNGRnD"/>
+      <class name="com.dropdownpractice.TestNGRnD2"/>
+      <class name="com.Amazon.AmazonEcom"/>
+    </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

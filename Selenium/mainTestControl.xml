@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Main Suite">
+    <suite-files>
+        <suite-file path="groupSpice.xml" />
+        <suite-file path="testng.xml" />
+        <suite-file path="groupAmazon.xml" />
+        <!-- Add more suite files as needed -->
+    </suite-files>
+</suite>
