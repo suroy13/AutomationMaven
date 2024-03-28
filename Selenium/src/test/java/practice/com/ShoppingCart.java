@@ -6,8 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.Test; 
 
 public class ShoppingCart {
 	
@@ -34,15 +35,15 @@ public class ShoppingCart {
 				System.out.println(product.get(i).getText()); 
 				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
 				break;
-			}
-			
-			
-			
-		}
-		
-		
-		
-
+			                                                  }
+			                                }
 }
+	// Close Browser
+	@AfterTest
+	public void TearDown() {
+		driver.manage().deleteAllCookies();
+		driver.quit();
+		System.out.println("Browser Closed, Test Concluded!");
+	}
 	
 }
