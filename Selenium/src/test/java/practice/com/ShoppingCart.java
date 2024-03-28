@@ -38,6 +38,7 @@ public class ShoppingCart {
 			                                                  }
 			                                }
 }
+	// Close Browser
 	@AfterTest
 	public void TearDown() {
 		driver.manage().deleteAllCookies();
