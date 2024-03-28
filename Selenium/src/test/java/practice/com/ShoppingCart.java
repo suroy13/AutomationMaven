@@ -32,7 +32,7 @@ public class ShoppingCart {
 			if (product.get(i).getText().contains("Cucumbe")) {
 				
 				System.out.println(product.get(i).getText()); 
-				driver.findElement(By.xpath("//button[text()='ADD TO CART']")).click();
+				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
 				break;
 			}
 			
