@@ -220,5 +220,14 @@ public class DropdownPracticeTest {
 		driver.quit();
 		System.out.println("Browser Closed, Test Concluded!");
 	}
+	
+	@Test(groups = { "printing" })
+
+	public void secondgroup() throws InterruptedException {
+		// Setting destinations
+
+		System.out.println("This is group 2");
+		
+		}
 
 }
