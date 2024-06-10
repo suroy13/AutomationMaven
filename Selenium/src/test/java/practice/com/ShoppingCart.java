@@ -17,7 +17,7 @@ public class ShoppingCart {
 
 	static WebDriver driver;
 
-	@BeforeTest
+	@BeforeTest (groups= {"shoppingKart"})
 	public void login() throws InterruptedException {
 		String browser = "CHROME";
 		switch (browser.toUpperCase()) {
@@ -48,7 +48,7 @@ public class ShoppingCart {
 	
 	}
 
-	@Test
+	@Test (groups= {"shoppingKart"})
 	public void dynamicdopdown() throws InterruptedException {
 		System.out.println("Going for Page Title");
 		System.out.println(driver.getTitle());
@@ -74,23 +74,25 @@ public class ShoppingCart {
 			  List itemsneededlist=Arrays.asList(itemsneeded);
 			 
 			String  name = product.get(i).getText();
-			
+			//Thread.sleep(5000);
 			
 			if (itemsneededlist.contains(productName)) {
 
 				counter++;
 				System.out.println("The respective Vegie "+ productName +" selected, hence inside!");
-				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
+				//driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
+				driver.findElements(By.xpath("	//div[@class=\"product-action\"]/button")).get(i).click();
+			
 				System.out.println(productName + ":  Add to Cart selected");
 				if (counter==sizeofItemsintheArry)
 					break;
 				
-			}
+			} 
 		}
 	}
 
 	// Close Browser
-	@AfterTest
+	@AfterTest (groups= {"shoppingKart"})
 	public void TearDown() {
 		driver.manage().deleteAllCookies();
 		driver.quit();
