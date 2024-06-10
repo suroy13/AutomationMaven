@@ -64,7 +64,7 @@ public class DropdownPracticeTest {
 		Thread.sleep(2000);
 	}
 
-	@Test(groups = { "smoke" },priority=0)
+	@Test(groups = { "smoke" }, priority = 0)
 
 	public void spiceJetLaunchApp() throws InterruptedException {
 		// Adding Implicit wait time of 5 seconds
@@ -79,7 +79,7 @@ public class DropdownPracticeTest {
 
 	}
 
-	@Test(groups = { "smoke" },priority=1)
+	@Test(groups = { "smoke" }, priority = 1)
 
 	public void spiceJetSelectDestination() throws InterruptedException {
 		// Setting destinations
@@ -112,13 +112,13 @@ public class DropdownPracticeTest {
 		default: {
 
 			System.out.println("Please select Origin Airport!");
-		         }
 		}
-		
+		}
+
 		System.out.println("origin Airport Selected");
 		Thread.sleep(2000); //
-		//driver.findElement(Spicejet.drpdnToDestination).click();
-		//Thread.sleep(2000);
+		// driver.findElement(Spicejet.drpdnToDestination).click();
+		// Thread.sleep(2000);
 		driver.findElement(By.xpath("//div[text()='DEL']/parent::div[1]")).click();
 		System.out.println("Desination Airport Selected");
 		System.out.println("Airport Selection Completed");
@@ -126,12 +126,10 @@ public class DropdownPracticeTest {
 		driver.findElement(Spicejet.currentDate).click();
 		System.out.println("The start date has been clicked");
 		Thread.sleep(2000);
-		
-		
 
 	}
 
-	@Test(groups = { "smoke" }, priority=2)
+	@Test(groups = { "smoke" }, priority = 2)
 
 	public void spiceJetNoOfPax() throws InterruptedException {
 
@@ -163,7 +161,7 @@ public class DropdownPracticeTest {
 		System.out.println("Passengers RE- Incremented");
 		noofPAX = driver.findElement(Spicejet.drpdnNoOfPAX).getText();
 		System.out.println("Passengers REIncremented To:" + noofPAX);
-		
+
 		System.out.println("About to select currency!");
 		Thread.sleep(4000);
 		driver.findElement(Spicejet.drpdnCurrency).click();
@@ -193,12 +191,12 @@ public class DropdownPracticeTest {
 		default: {
 
 			System.out.println("Please select Currency!");
-		         }
 		}
-		
-		//Select Checkbox
+		}
+
+		// Select Checkbox
 		Thread.sleep(2000);
-		//driver.findElement(Spicejet.radioFamilynFrnds).click();
+		// driver.findElement(Spicejet.radioFamilynFrnds).click();
 		Thread.sleep(2000);
 		driver.findElement(Spicejet.buttonSearchFlight).click();
 		/*
@@ -207,7 +205,7 @@ public class DropdownPracticeTest {
 		 * Thread.sleep(2000); driver.findElement(Spicejet.buttonContinue).click();
 		 */
 		Thread.sleep(7000);
-		validateFlightDetails=driver.findElement(Spicejet.labelFlighDetailspage).getText();
+		validateFlightDetails = driver.findElement(Spicejet.labelFlighDetailspage).getText();
 		System.out.println(validateFlightDetails);
 		Assert.assertEquals("Compare Fares", validateFlightDetails);
 
@@ -220,14 +218,14 @@ public class DropdownPracticeTest {
 		driver.quit();
 		System.out.println("Browser Closed, Test Concluded!");
 	}
-	
+
 	@Test(groups = { "printing" })
 
 	public void secondgroup() throws InterruptedException {
 		// Setting destinations
 
 		System.out.println("This is group 2");
-		
-		}
+
+	}
 
 }
