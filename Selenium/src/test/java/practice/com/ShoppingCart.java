@@ -57,7 +57,10 @@ public class ShoppingCart {
 		 * Code to create array for Expected lists By: Subhankar Roy 28-03-2024
 		 */
 		String[] itemsneeded = { "Cucumber", "Brocolli", "Potato","Beans" };
-
+		
+		int sizeofItemsintheArry= itemsneeded.length;
+		System.out.println(sizeofItemsintheArry);
+		int counter=0;
 		// For Loop to check for itemsneeded
 		for (int i = 0; i < product.size(); i++) {
 
@@ -71,11 +74,16 @@ public class ShoppingCart {
 			  List itemsneededlist=Arrays.asList(itemsneeded);
 			 
 			String  name = product.get(i).getText();
+			
+			
 			if (itemsneededlist.contains(productName)) {
 
+				counter++;
 				System.out.println("The respective Vegie "+ productName +" selected, hence inside!");
 				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
 				System.out.println(productName + ":  Add to Cart selected");
+				if (counter==sizeofItemsintheArry)
+					break;
 				
 			}
 		}
