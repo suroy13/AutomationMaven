@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -16,19 +18,41 @@ public class ShoppingCart {
 	static WebDriver driver;
 
 	@BeforeTest
-	public void login() {
-		System.setProperty("Webdriver.chrome.driver",
-				"C:\\Development\\Target2024\\Drivers\\chromedriver-win64\\chromedriver.exe");
-		driver = new ChromeDriver();
+	public void login() throws InterruptedException {
+		String browser = "CHROME";
+		switch (browser.toUpperCase()) {
+		case "CHROME": {
+			System.setProperty("Webdriver.chrome.driver",
+					"C:\\Development\\Target2024\\Drivers\\chromedriver-win64\\chromedriver.exe");
+			driver = new ChromeDriver();
+			break;
+		}
+		case "EDGE": {
+			driver = new EdgeDriver();
+			break;
+		}
+		case "FIREFOX": {
+			driver = new FirefoxDriver();
+			break;
+		}
+		default: {
+			System.out.println("OPPS, No Driver Selected, You need To select atleast one Broswer!");
+		}
+		}
+		System.out.println(browser + " Browser Launched for Test");
 		driver.manage().window().maximize();
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+		Thread.sleep(3000);
+		
+		
+	
 	}
 
 	@Test
-	public void dynamicdopdown(List arraylist) throws InterruptedException {
-		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
-		Thread.sleep(3000);
+	public void dynamicdopdown() throws InterruptedException {
+		System.out.println("Going for Page Title");
 		System.out.println(driver.getTitle());
-		List<WebElement> product = driver.findElements(By.xpath("//div[@class=\"product\"]"));
+		List<WebElement> product = driver.findElements(By.cssSelector("h4.product-name"));
 		/*
 		 * Code to create array for Expected lists By: Subhankar Roy 28-03-2024
 		 */
@@ -40,16 +64,19 @@ public class ShoppingCart {
 			/*
 			 * Code to separate out the Name from the long text By: Subhankar Roy 28-03-2024
 			 */
-			String[] name = product.get(i).getText().split("-");
-			String productName = name[0].trim();
 			
-			List itemsneededlist=Arrays.asList(itemsneeded);
-
+			  String[] names = product.get(i).getText().split("-"); 
+			  String productName =names [0].trim(); 
+			  System.out.println("The extracted name of the vegies is: " + productName); 
+			  List itemsneededlist=Arrays.asList(itemsneeded);
+			 
+			String  name = product.get(i).getText();
 			if (itemsneededlist.contains(productName)) {
 
-				System.out.println(productName);
+				System.out.println("The respective Vegie "+ productName +" selected, hence inside!");
 				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
-				break;
+				System.out.println(productName + ":  Add to Cart selected");
+				
 			}
 		}
 	}
